@@ -9,6 +9,46 @@ import ActivityKit
 import SwiftUI
 import WidgetKit
 
+// MARK: - Shared Functions
+
+/// Returns the appropriate SF Symbol for the device type
+private func deviceIcon(for deviceType: String?) -> String {
+  guard let type = deviceType else { return "bluetooth" }
+
+  switch type {
+  case "bluetooth":
+    return "bluetooth"
+  case "airpods":
+    return "airpodspro"
+  case "beats":
+    return "beats.headphones"
+  case "watch":
+    return "applewatch"
+  case "keyboard":
+    return "keyboard"
+  case "mouse":
+    return "computermouse"
+  case "speaker":
+    return "hifispeaker"
+  case "headphones":
+    return "headphones"
+  case "car":
+    return "car"
+  case "iphone":
+    return "iphone"
+  case "ipad":
+    return "ipad"
+  case "mac":
+    return "macbook"
+  case "tv":
+    return "tv"
+  case "generic":
+    return "antenna.radiowaves.left.and.right"
+  default:
+    return "bluetooth"
+  }
+}
+
 // MARK: - Animated Checkmark View
 
 struct AnimatedCheckmark: View {
@@ -16,7 +56,7 @@ struct AnimatedCheckmark: View {
 
   var body: some View {
     ProgressView(
-      timerInterval: connectionTime...connectionTime.addingTimeInterval(0.7),
+      timerInterval: connectionTime...connectionTime.addingTimeInterval(0.8),
       countsDown: false,
       label: {
         Image(systemName: "checkmark")
@@ -58,6 +98,7 @@ struct BluetoothIslandWidget: Widget {
         DynamicIslandExpandedRegion(.center) {
           Text("Connected to")
             .font(.caption)
+            .foregroundColor(.secondary)
         }
 
         DynamicIslandExpandedRegion(.bottom) {
@@ -80,42 +121,6 @@ struct BluetoothIslandWidget: Widget {
       }
     }
   }
-
-  /// Returns the appropriate SF Symbol for the device type
-  private func deviceIcon(for deviceType: String?) -> String {
-    guard let type = deviceType else { return "antenna.radiowaves.left.and.right" }
-
-    switch type {
-    case "airpods":
-      return "airpodspro"
-    case "beats":
-      return "beats.headphones"
-    case "watch":
-      return "applewatch"
-    case "keyboard":
-      return "keyboard"
-    case "mouse":
-      return "computermouse"
-    case "speaker":
-      return "hifispeaker"
-    case "headphones":
-      return "headphones"
-    case "car":
-      return "car"
-    case "iphone":
-      return "iphone"
-    case "ipad":
-      return "ipad"
-    case "mac":
-      return "macbook"
-    case "tv":
-      return "tv"
-    case "generic":
-      return "antenna.radiowaves.left.and.right"
-    default:
-      return "antenna.radiowaves.left.and.right"
-    }
-  }
 }
 
 // MARK: - Lock Screen View
@@ -124,61 +129,33 @@ struct LiveActivityLockScreenView: View {
   let context: ActivityViewContext<BluetoothActivityAttributes>
 
   var body: some View {
-    HStack(spacing: 12) {
-      Image(systemName: deviceIcon(for: context.state.deviceType))
-        .font(.title2)
-        .foregroundColor(.blue)
+    VStack(spacing: 8) {
+      // Top row: Device icon and checkmark
+      HStack(spacing: 0) {
+        // Leading: Device icon
+        Image(systemName: deviceIcon(for: context.state.deviceType))
+          .font(.title2)
+          .foregroundColor(.white)
+          .frame(maxWidth: .infinity, alignment: .leading)
 
-      VStack(alignment: .leading, spacing: 4) {
-        Text("Bluetooth Connected")
+        // Center: Connected to text
+        Text("Connected to")
           .font(.caption)
           .foregroundColor(.secondary)
+          .frame(maxWidth: .infinity, alignment: .center)
 
-        Text(context.state.deviceName)
-          .font(.headline)
+        // Trailing: Animated checkmark
+        AnimatedCheckmark(connectionTime: context.state.connectionTime)
+          .frame(maxWidth: .infinity, alignment: .trailing)
       }
 
-      Spacer()
-
-      Image(systemName: "checkmark.circle.fill")
-        .foregroundColor(.green)
-        .font(.title2)
+      // Bottom row: Device name
+      Text(context.state.deviceName)
+        .font(.subheadline)
+        .fontWeight(.medium)
+        .lineLimit(1)
+        .frame(maxWidth: .infinity, alignment: .center)
     }
     .padding()
-  }
-
-  private func deviceIcon(for deviceType: String?) -> String {
-    guard let type = deviceType else { return "antenna.radiowaves.left.and.right" }
-
-    switch type {
-    case "airpods":
-      return "airpodspro"
-    case "beats":
-      return "beats.headphones"
-    case "watch":
-      return "applewatch"
-    case "keyboard":
-      return "keyboard"
-    case "mouse":
-      return "computermouse"
-    case "speaker":
-      return "hifispeaker"
-    case "headphones":
-      return "headphones"
-    case "car":
-      return "car"
-    case "iphone":
-      return "iphone"
-    case "ipad":
-      return "ipad"
-    case "mac":
-      return "macbook"
-    case "tv":
-      return "tv"
-    case "generic":
-      return "antenna.radiowaves.left.and.right"
-    default:
-      return "antenna.radiowaves.left.and.right"
-    }
   }
 }

@@ -41,9 +41,16 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
   @Parameter(
     title: "Device Type",
     description: "Type of device for icon display",
-    default: .generic
+    default: .bluetooth
   )
   var deviceType: DeviceType
+
+  @Parameter(
+    title: "Duration",
+    description: "How long to display the Live Activity",
+    default: .fiveSeconds
+  )
+  var duration: Duration
 
   // MARK: - Logger
 
@@ -91,11 +98,12 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
     logger.info("✅ [Shortcut] Live Activity started successfully")
     print("✅ [Shortcut] Live Activity started for: \(deviceName)")
 
+    // Schedule automatic dismissal after configured duration
     Task {
-      try? await Task.sleep(nanoseconds: 5_000_000_000)
+      try? await Task.sleep(nanoseconds: duration.nanoseconds)
       let finalContent = ActivityContent(state: contentState, staleDate: Date())
       await activity.end(finalContent, dismissalPolicy: .immediate)
-      print("🛑 [LiveActivity] Ended for: \(deviceName)")
+      print("🛑 [LiveActivity] Ended for: \(deviceName) after \(duration.seconds)s")
     }
 
     return .result(dialog: "Showing \(deviceName) in Dynamic Island")

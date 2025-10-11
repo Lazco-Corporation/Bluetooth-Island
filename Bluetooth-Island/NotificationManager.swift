@@ -71,7 +71,7 @@ actor NotificationManager {
 
     // Create notification content
     let content = UNMutableNotificationContent()
-    content.title = "Device Connected"
+    content.title = "Connected to"
     content.body = deviceName
     content.sound = .default
 

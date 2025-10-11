@@ -72,11 +72,17 @@ struct ContentView: View {
               InstructionStep(
                 number: 6,
                 title: "Choose Device Type",
-                description: "Select icon type: AirPods, Watch, Car, Generic, etc."
+                description: "Select icon type: Bluetooth, AirPods, Watch, Car, etc."
               )
 
               InstructionStep(
                 number: 7,
+                title: "Set Duration",
+                description: "Choose how long to display (1s, 2s, 3s, 5s, 10s, 15s, 30s)"
+              )
+
+              InstructionStep(
+                number: 8,
                 title: "Disable Shortcuts Banner",
                 description: "Turn OFF \"Notify When Run\" to hide Shortcuts notification"
               )
@@ -99,7 +105,7 @@ struct ContentView: View {
               NotificationTypeCard(
                 icon: "iphone.gen3.radiowaves.left.and.right",
                 title: "Show Live Activity",
-                description: "2-second Dynamic Island notification",
+                description: "Configurable Dynamic Island notification",
                 permission: "No permission • Runs in background",
                 permissionColor: .green
               )
