@@ -13,11 +13,9 @@ import WidgetKit
 
 /// Returns the appropriate SF Symbol for the device type
 private func deviceIcon(for deviceType: String?) -> String {
-  guard let type = deviceType else { return "bluetooth" }
+  guard let type = deviceType else { return "antenna.radiowaves.left.and.right" }
 
   switch type {
-  case "bluetooth":
-    return "bluetooth"
   case "airpods":
     return "airpodspro"
   case "beats":
@@ -45,7 +43,7 @@ private func deviceIcon(for deviceType: String?) -> String {
   case "generic":
     return "antenna.radiowaves.left.and.right"
   default:
-    return "bluetooth"
+    return "antenna.radiowaves.left.and.right"
   }
 }
 

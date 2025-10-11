@@ -18,7 +18,6 @@
 		851263EDC184B631D4570E13 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152127DF835D3822F4FEA4C /* Duration.swift */; };
 		8C077D173AA9BF3560AB40DC /* BluetoothLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA403A332033035E7CC24A2 /* BluetoothLiveActivity.swift */; };
 		91F26283BD17EE1EB5D72FA8 /* BluetoothIslandShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AF0C32A5F63D8717E05C8 /* BluetoothIslandShortcuts.swift */; };
-		AD3D0DBE359446DFB4B73550 /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F3848202E04E84612F81B /* LiveActivityManager.swift */; };
 		C7E2D46D83F758AF66A8A8E8 /* BluetoothIslandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC36A12684018EC0D24E665 /* BluetoothIslandApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -200,7 +199,6 @@
 				75D050E519B253D2B83F49F7 /* ContentView.swift in Sources */,
 				7CD9E86F051471019B9B243D /* DeviceType.swift in Sources */,
 				851263EDC184B631D4570E13 /* Duration.swift in Sources */,
-				AD3D0DBE359446DFB4B73550 /* LiveActivityManager.swift in Sources */,
 				4BDD179E61370CB9066E0C3A /* NotificationManager.swift in Sources */,
 				61FE96BB20706F14D4237B85 /* TriggerLiveActivityIntent.swift in Sources */,
 				1DC5289067793959FE51A363 /* TriggerNotificationIntent.swift in Sources */,

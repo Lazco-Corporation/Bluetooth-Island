@@ -9,7 +9,6 @@ import AppIntents
 
 /// Device type options for selecting icons in Live Activities and Notifications
 enum DeviceType: String, AppEnum {
-  case bluetooth = "Bluetooth"
   case airpods = "AirPods"
   case beats = "Beats"
   case watch = "Apple Watch"
@@ -27,10 +26,6 @@ enum DeviceType: String, AppEnum {
   static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Device Type")
 
   static var caseDisplayRepresentations: [DeviceType: DisplayRepresentation] = [
-    .bluetooth: DisplayRepresentation(
-      title: "Bluetooth",
-      image: .init(systemName: "bluetooth")
-    ),
     .airpods: DisplayRepresentation(
       title: "AirPods",
       image: .init(systemName: "airpodspro")
@@ -88,7 +83,6 @@ enum DeviceType: String, AppEnum {
   /// Returns the internal device type string for use in BluetoothActivityAttributes
   var deviceTypeString: String {
     switch self {
-    case .bluetooth: return "bluetooth"
     case .airpods: return "airpods"
     case .beats: return "beats"
     case .watch: return "watch"
