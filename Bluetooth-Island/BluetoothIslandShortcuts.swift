@@ -17,7 +17,7 @@ struct BluetoothIslandShortcuts: AppShortcutsProvider {
         "Display device in Dynamic Island using \(.applicationName)"
       ],
       shortTitle: "Show Live Activity for Device",
-      systemImageName: "iphone.gen3.radiowaves.left.and.right"
+      systemImageName: "bell.badge"
     ),
     AppShortcut(
       intent: TriggerNotificationIntent(),

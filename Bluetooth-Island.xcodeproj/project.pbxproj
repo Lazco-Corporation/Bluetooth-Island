@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DC5289067793959FE51A363 /* TriggerNotificationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5071EAFF5D7FDA2676E7E7 /* TriggerNotificationIntent.swift */; };
 		33DAF38BCA575854580A552B /* BluetoothActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299736BD4F50806359BF2BBB /* BluetoothActivityAttributes.swift */; };
 		4BDD179E61370CB9066E0C3A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D13771033D27FED1A824EB6 /* NotificationManager.swift */; };
 		55A262242076329E1AA99A80 /* BluetoothIslandWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 05626EA36FA02ED2DA71653B /* BluetoothIslandWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -55,6 +56,7 @@
 		8D13771033D27FED1A824EB6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AD8C15E8C607C90526126217 /* Bluetooth-Island.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bluetooth-Island.entitlements"; sourceTree = "<group>"; };
 		B731D83112D4F9660A9E38E4 /* Bluetooth-Island.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluetooth-Island.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB5071EAFF5D7FDA2676E7E7 /* TriggerNotificationIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerNotificationIntent.swift; sourceTree = "<group>"; };
 		DAA403A332033035E7CC24A2 /* BluetoothLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothLiveActivity.swift; sourceTree = "<group>"; };
 		ED2DDC72EB8FD5FC63A076E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FDC36A12684018EC0D24E665 /* BluetoothIslandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothIslandApp.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				878F3848202E04E84612F81B /* LiveActivityManager.swift */,
 				8D13771033D27FED1A824EB6 /* NotificationManager.swift */,
 				7C94C48A5F8EE46DD5CEC325 /* TriggerLiveActivityIntent.swift */,
+				BB5071EAFF5D7FDA2676E7E7 /* TriggerNotificationIntent.swift */,
 			);
 			path = "Bluetooth-Island";
 			sourceTree = "<group>";
@@ -151,7 +154,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					B0ADEC91C0DDF905BA51A8C9 = {
 						ProvisioningStyle = Automatic;
@@ -192,6 +195,7 @@
 				AD3D0DBE359446DFB4B73550 /* LiveActivityManager.swift in Sources */,
 				4BDD179E61370CB9066E0C3A /* NotificationManager.swift in Sources */,
 				61FE96BB20706F14D4237B85 /* TriggerLiveActivityIntent.swift in Sources */,
+				1DC5289067793959FE51A363 /* TriggerNotificationIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +298,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -316,7 +319,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.9;
@@ -381,7 +383,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -396,7 +397,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.9;
