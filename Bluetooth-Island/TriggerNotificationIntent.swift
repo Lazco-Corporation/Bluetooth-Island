@@ -27,7 +27,7 @@ struct TriggerNotificationIntent: AppIntent {
   @Parameter(
     title: "Icon",
     description: "Choose an icon that represents your device",
-    default: .bluetooth
+    default: .generic
   )
   var deviceType: DeviceType
 
