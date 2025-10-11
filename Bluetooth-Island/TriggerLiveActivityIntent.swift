@@ -79,7 +79,6 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
     let content = ActivityContent(
       state: contentState,
       staleDate: nil,
-      relevanceScore: 1.0
     )
 
     // Start the Live Activity
@@ -94,7 +93,7 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
 
     // Schedule automatic dismissal after 2 seconds
     Task {
-      try? await Task.sleep(nanoseconds: 2_000_000_000)
+      try? await Task.sleep(nanoseconds: 5_000_000_000)
       let finalContent = ActivityContent(state: contentState, staleDate: Date())
       await activity.end(finalContent, dismissalPolicy: .immediate)
       print("🛑 [LiveActivity] Ended for: \(deviceName)")

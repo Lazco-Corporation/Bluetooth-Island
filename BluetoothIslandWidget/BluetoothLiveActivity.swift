@@ -9,6 +9,47 @@ import ActivityKit
 import SwiftUI
 import WidgetKit
 
+// MARK: - Animated Checkmark View
+
+struct AnimatedCheckmark: View {
+  let connectionTime: Date
+  @State private var progress: CGFloat = 0.0
+
+  var body: some View {
+    ZStack {
+      // Background circle
+      Circle()
+        .stroke(Color.green.opacity(0.3), lineWidth: 2.5)
+        .frame(width: 24, height: 24)
+
+      // Animated progress ring
+      Circle()
+        .trim(from: 0, to: progress)
+        .stroke(
+          Color.green,
+          style: StrokeStyle(lineWidth: 2.5, lineCap: .round)
+        )
+        .frame(width: 24, height: 24)
+        .rotationEffect(.degrees(-90))
+        .animation(.linear(duration: 1.0), value: progress)
+
+      // Checkmark in center
+      Image(systemName: "checkmark")
+        .font(.system(size: 10, weight: .bold))
+        .foregroundColor(.green)
+    }
+    .onAppear {
+      progress = 1.0
+    }
+    .onChange(of: connectionTime) { _ in
+      progress = 0.0
+      withAnimation(.linear(duration: 1.0)) {
+        progress = 1.0
+      }
+    }
+  }
+}
+
 @main
 struct BluetoothIslandWidget: Widget {
   var body: some WidgetConfiguration {
@@ -26,9 +67,7 @@ struct BluetoothIslandWidget: Widget {
         }
 
         DynamicIslandExpandedRegion(.trailing) {
-          Image(systemName: "checkmark.circle.fill")
-            .foregroundColor(.green)
-            .font(.body)
+          AnimatedCheckmark(connectionTime: context.state.connectionTime)
         }
 
         DynamicIslandExpandedRegion(.bottom) {
@@ -38,16 +77,16 @@ struct BluetoothIslandWidget: Widget {
         }
       } compactLeading: {
         // Compact leading (left side of notch)
-        Image(systemName: "antenna.radiowaves.left.and.right")
-          .foregroundColor(.blue)
+        Image(systemName: deviceIcon(for: context.state.deviceType))
+          .foregroundColor(.white)
       } compactTrailing: {
         // Compact trailing (right side of notch)
         Image(systemName: "checkmark.circle.fill")
           .foregroundColor(.green)
       } minimal: {
         // Minimal presentation (when multiple activities are active)
-        Image(systemName: "antenna.radiowaves.left.and.right")
-          .foregroundColor(.blue)
+        Image(systemName: deviceIcon(for: context.state.deviceType))
+          .foregroundColor(.white)
       }
     }
   }
