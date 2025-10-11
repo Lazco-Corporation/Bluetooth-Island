@@ -78,7 +78,7 @@ struct ContentView: View {
               InstructionStep(
                 number: 7,
                 title: "Set Duration",
-                description: "Choose how long to display (1s, 2s, 3s, 5s, 10s, 15s, 30s)"
+                description: "Choose how long to display (1s, 2s, 3s, 5s, 10s, 15s)"
               )
 
               InstructionStep(

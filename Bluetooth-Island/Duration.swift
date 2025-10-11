@@ -15,7 +15,6 @@ enum Duration: String, AppEnum {
   case fiveSeconds = "5 seconds"
   case tenSeconds = "10 seconds"
   case fifteenSeconds = "15 seconds"
-  case thirtySeconds = "30 seconds"
 
   static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Duration")
 
@@ -44,10 +43,6 @@ enum Duration: String, AppEnum {
       title: "15 seconds",
       image: .init(systemName: "timer")
     ),
-    .thirtySeconds: DisplayRepresentation(
-      title: "30 seconds",
-      image: .init(systemName: "timer")
-    )
   ]
 
   /// Returns the duration in nanoseconds for Task.sleep
@@ -65,8 +60,6 @@ enum Duration: String, AppEnum {
       return 10_000_000_000
     case .fifteenSeconds:
       return 15_000_000_000
-    case .thirtySeconds:
-      return 30_000_000_000
     }
   }
 
@@ -85,8 +78,6 @@ enum Duration: String, AppEnum {
       return 10.0
     case .fifteenSeconds:
       return 15.0
-    case .thirtySeconds:
-      return 30.0
     }
   }
 }

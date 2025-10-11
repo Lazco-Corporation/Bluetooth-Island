@@ -27,27 +27,27 @@ enum LiveActivityError: Error, CustomLocalizedStringResourceConvertible {
 struct TriggerLiveActivityIntent: LiveActivityIntent {
   // MARK: - Intent Configuration
 
-  static var title: LocalizedStringResource = "Show Live Activity for Device"
-  static var description = IntentDescription("Displays a Live Activity when connected to a device. Configure the trigger device in Shortcuts Automation.")
+  static var title: LocalizedStringResource = "Show Live Activity (Dynamic Island)"
+  static var description = IntentDescription("Displays a Live Activity. Requires iPhone 14 Pro or newer. Perfect for automation triggers.")
 
   // Run in background without opening the app
   static var openAppWhenRun: Bool = false
 
   // MARK: - Parameters
 
-  @Parameter(title: "Device Name", description: "Name of the connected device")
+  @Parameter(title: "Device Name", description: "Text to display (e.g., \"AirPods Pro\", \"Office\", \"Home\")")
   var deviceName: String
 
   @Parameter(
-    title: "Device Type",
-    description: "Type of device for icon display",
+    title: "Icon",
+    description: "Choose an icon that represents your device",
     default: .bluetooth
   )
   var deviceType: DeviceType
 
   @Parameter(
-    title: "Duration",
-    description: "How long to display the Live Activity",
+    title: "Display Duration",
+    description: "How long the notification stays visible",
     default: .fiveSeconds
   )
   var duration: Duration

@@ -13,19 +13,21 @@ struct BluetoothIslandShortcuts: AppShortcutsProvider {
     AppShortcut(
       intent: TriggerLiveActivityIntent(),
       phrases: [
-        "Show Live Activity for device in \(.applicationName)",
-        "Display device in Dynamic Island using \(.applicationName)"
+        "Show \(.applicationName) notification",
+        "Display in Dynamic Island with \(.applicationName)",
+        "Trigger \(.applicationName) Live Activity"
       ],
-      shortTitle: "Show Live Activity for Device",
-      systemImageName: "bell.badge"
+      shortTitle: "Dynamic Island Notification",
+      systemImageName: "iphone.gen3.radiowaves.left.and.right"
     ),
     AppShortcut(
       intent: TriggerNotificationIntent(),
       phrases: [
-        "Send notification for device in \(.applicationName)",
-        "Notify about device using \(.applicationName)"
+        "Send \(.applicationName) notification",
+        "Notify with \(.applicationName)",
+        "Show \(.applicationName) alert"
       ],
-      shortTitle: "Show Notification for Device",
+      shortTitle: "Notification Center Alert",
       systemImageName: "bell.badge"
     )
   ]

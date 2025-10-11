@@ -13,21 +13,21 @@ import os.log
 struct TriggerNotificationIntent: AppIntent {
   // MARK: - Intent Configuration
 
-  static var title: LocalizedStringResource = "Show Notification for Device"
-  static var description = IntentDescription("Sends a notification to Notification Center. Configure the trigger device in Shortcuts Automation.")
+  static var title: LocalizedStringResource = "Send Notification"
+  static var description = IntentDescription("Sends a persistent notification to Notification Center. Works on all iPhones. Requires notification permission.")
 
   // Run in background without opening the app
   static var openAppWhenRun: Bool = false
 
   // MARK: - Parameters
 
-  @Parameter(title: "Device Name", description: "Name of the connected device")
+  @Parameter(title: "Device Name", description: "Text to display in notification (e.g., \"AirPods Pro\", \"Office\", \"Home\")")
   var deviceName: String
 
   @Parameter(
-    title: "Device Type",
-    description: "Type of device for icon display",
-    default: .generic
+    title: "Icon",
+    description: "Choose an icon that represents your device",
+    default: .bluetooth
   )
   var deviceType: DeviceType
 
