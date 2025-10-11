@@ -91,7 +91,6 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
     logger.info("✅ [Shortcut] Live Activity started successfully")
     print("✅ [Shortcut] Live Activity started for: \(deviceName)")
 
-    // Schedule automatic dismissal after 2 seconds
     Task {
       try? await Task.sleep(nanoseconds: 5_000_000_000)
       let finalContent = ActivityContent(state: contentState, staleDate: Date())

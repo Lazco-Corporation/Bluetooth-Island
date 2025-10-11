@@ -13,40 +13,23 @@ import WidgetKit
 
 struct AnimatedCheckmark: View {
   let connectionTime: Date
-  @State private var progress: CGFloat = 0.0
 
   var body: some View {
-    ZStack {
-      // Background circle
-      Circle()
-        .stroke(Color.green.opacity(0.3), lineWidth: 2.5)
-        .frame(width: 24, height: 24)
-
-      // Animated progress ring
-      Circle()
-        .trim(from: 0, to: progress)
-        .stroke(
-          Color.green,
-          style: StrokeStyle(lineWidth: 2.5, lineCap: .round)
-        )
-        .frame(width: 24, height: 24)
-        .rotationEffect(.degrees(-90))
-        .animation(.linear(duration: 1.0), value: progress)
-
-      // Checkmark in center
-      Image(systemName: "checkmark")
-        .font(.system(size: 10, weight: .bold))
-        .foregroundColor(.green)
-    }
-    .onAppear {
-      progress = 1.0
-    }
-    .onChange(of: connectionTime) { _ in
-      progress = 0.0
-      withAnimation(.linear(duration: 1.0)) {
-        progress = 1.0
+    ProgressView(
+      timerInterval: connectionTime...connectionTime.addingTimeInterval(0.7),
+      countsDown: false,
+      label: {
+        Image(systemName: "checkmark")
+          .foregroundColor(.green)
+      },
+      currentValueLabel: {
+        Image(systemName: "checkmark")
+          .foregroundColor(.green)
       }
-    }
+    )
+    .progressViewStyle(.circular)
+    .tint(.green)
+    .frame(width: 24, height: 24)
   }
 }
 
@@ -64,16 +47,24 @@ struct BluetoothIslandWidget: Widget {
           Image(systemName: deviceIcon(for: context.state.deviceType))
             .foregroundColor(.white)
             .font(.body)
+            .padding(.leading, 1)
         }
 
         DynamicIslandExpandedRegion(.trailing) {
           AnimatedCheckmark(connectionTime: context.state.connectionTime)
+            .padding(.trailing, 1)
+        }
+
+        DynamicIslandExpandedRegion(.center) {
+          Text("Connected to")
+            .font(.caption)
         }
 
         DynamicIslandExpandedRegion(.bottom) {
           Text(context.state.deviceName)
             .font(.subheadline)
-            .padding(.top, 4)
+            .padding(.top, 2)
+            .lineLimit(1)
         }
       } compactLeading: {
         // Compact leading (left side of notch)
@@ -81,8 +72,7 @@ struct BluetoothIslandWidget: Widget {
           .foregroundColor(.white)
       } compactTrailing: {
         // Compact trailing (right side of notch)
-        Image(systemName: "checkmark.circle.fill")
-          .foregroundColor(.green)
+        AnimatedCheckmark(connectionTime: context.state.connectionTime)
       } minimal: {
         // Minimal presentation (when multiple activities are active)
         Image(systemName: deviceIcon(for: context.state.deviceType))
