@@ -24,6 +24,13 @@ struct TriggerNotificationIntent: AppIntent {
   @Parameter(title: "Device Name", description: "Name of the connected device")
   var deviceName: String
 
+  @Parameter(
+    title: "Device Type",
+    description: "Type of device for icon display",
+    default: .generic
+  )
+  var deviceType: DeviceType
+
   // MARK: - Logger
 
   private let logger = Logger(subsystem: "com.lazco.BluetoothIsland", category: "TriggerNotificationIntent")

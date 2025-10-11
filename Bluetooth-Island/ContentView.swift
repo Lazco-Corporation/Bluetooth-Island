@@ -71,6 +71,12 @@ struct ContentView: View {
 
               InstructionStep(
                 number: 6,
+                title: "Choose Device Type",
+                description: "Select icon type: AirPods, Watch, Car, Generic, etc."
+              )
+
+              InstructionStep(
+                number: 7,
                 title: "Disable Shortcuts Banner",
                 description: "Turn OFF \"Notify When Run\" to hide Shortcuts notification"
               )

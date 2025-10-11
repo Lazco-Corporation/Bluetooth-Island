@@ -20,31 +20,21 @@ struct BluetoothIslandWidget: Widget {
       DynamicIsland {
         // Expanded region
         DynamicIslandExpandedRegion(.leading) {
-          Label {
-            Text(context.state.deviceName)
-              .font(.caption)
-          } icon: {
-            Image(systemName: deviceIcon(for: context.state.deviceType))
-              .foregroundColor(.blue)
-          }
+          Image(systemName: deviceIcon(for: context.state.deviceType))
+            .foregroundColor(.white)
+            .font(.body)
         }
 
         DynamicIslandExpandedRegion(.trailing) {
           Image(systemName: "checkmark.circle.fill")
             .foregroundColor(.green)
-            .font(.title3)
+            .font(.body)
         }
 
         DynamicIslandExpandedRegion(.bottom) {
-          HStack {
-            Image(systemName: "antenna.radiowaves.left.and.right")
-              .foregroundColor(.blue)
-
-            Text("Connected via Bluetooth")
-              .font(.caption)
-              .foregroundColor(.secondary)
-          }
-          .padding(.top, 4)
+          Text(context.state.deviceName)
+            .font(.subheadline)
+            .padding(.top, 4)
         }
       } compactLeading: {
         // Compact leading (left side of notch)
@@ -64,13 +54,13 @@ struct BluetoothIslandWidget: Widget {
 
   /// Returns the appropriate SF Symbol for the device type
   private func deviceIcon(for deviceType: String?) -> String {
-    guard let type = deviceType else { return "bluetooth" }
+    guard let type = deviceType else { return "antenna.radiowaves.left.and.right" }
 
     switch type {
     case "airpods":
       return "airpodspro"
     case "beats":
-      return "headphones"
+      return "beats.headphones"
     case "watch":
       return "applewatch"
     case "keyboard":
@@ -79,8 +69,22 @@ struct BluetoothIslandWidget: Widget {
       return "computermouse"
     case "speaker":
       return "hifispeaker"
+    case "headphones":
+      return "headphones"
+    case "car":
+      return "car"
+    case "iphone":
+      return "iphone"
+    case "ipad":
+      return "ipad"
+    case "mac":
+      return "macbook"
+    case "tv":
+      return "tv"
+    case "generic":
+      return "antenna.radiowaves.left.and.right"
     default:
-      return "bluetooth"
+      return "antenna.radiowaves.left.and.right"
     }
   }
 }
@@ -115,13 +119,13 @@ struct LiveActivityLockScreenView: View {
   }
 
   private func deviceIcon(for deviceType: String?) -> String {
-    guard let type = deviceType else { return "bluetooth" }
+    guard let type = deviceType else { return "antenna.radiowaves.left.and.right" }
 
     switch type {
     case "airpods":
       return "airpodspro"
     case "beats":
-      return "headphones"
+      return "beats.headphones"
     case "watch":
       return "applewatch"
     case "keyboard":
@@ -130,8 +134,22 @@ struct LiveActivityLockScreenView: View {
       return "computermouse"
     case "speaker":
       return "hifispeaker"
+    case "headphones":
+      return "headphones"
+    case "car":
+      return "car"
+    case "iphone":
+      return "iphone"
+    case "ipad":
+      return "ipad"
+    case "mac":
+      return "macbook"
+    case "tv":
+      return "tv"
+    case "generic":
+      return "antenna.radiowaves.left.and.right"
     default:
-      return "bluetooth"
+      return "antenna.radiowaves.left.and.right"
     }
   }
 }

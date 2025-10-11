@@ -38,6 +38,13 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
   @Parameter(title: "Device Name", description: "Name of the connected device")
   var deviceName: String
 
+  @Parameter(
+    title: "Device Type",
+    description: "Type of device for icon display",
+    default: .generic
+  )
+  var deviceType: DeviceType
+
   // MARK: - Logger
 
   private let logger = Logger(subsystem: "com.lazco.BluetoothIsland", category: "TriggerLiveActivityIntent")
@@ -61,14 +68,11 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
       sessionId: UUID().uuidString
     )
 
-    // Determine device type
-    let deviceType = determineDeviceType(from: deviceName)
-
     // Create the initial content state
     let contentState = BluetoothActivityAttributes.ContentState(
       deviceName: deviceName,
       connectionTime: Date(),
-      deviceType: deviceType
+      deviceType: deviceType.deviceTypeString
     )
 
     // Create the activity content
@@ -97,27 +101,5 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
     }
 
     return .result(dialog: "Showing \(deviceName) in Dynamic Island")
-  }
-
-  // MARK: - Helper Methods
-
-  private func determineDeviceType(from deviceName: String) -> String {
-    let lowercased = deviceName.lowercased()
-
-    if lowercased.contains("airpods") {
-      return "airpods"
-    } else if lowercased.contains("beats") {
-      return "beats"
-    } else if lowercased.contains("watch") {
-      return "watch"
-    } else if lowercased.contains("keyboard") {
-      return "keyboard"
-    } else if lowercased.contains("mouse") {
-      return "mouse"
-    } else if lowercased.contains("speaker") {
-      return "speaker"
-    } else {
-      return "generic"
-    }
   }
 }
