@@ -81,19 +81,15 @@ struct BluetoothIslandWidget: Widget {
       DynamicIsland {
         // Expanded region
         DynamicIslandExpandedRegion(.leading) {
-          VStack(alignment: .center) {
-            Image(systemName: deviceIcon(for: context.state.deviceType))
-              .foregroundColor(.white)
-              .font(.system(size: 28))
-          }
-          .frame(width: 50, height: 50)
+          Image(systemName: deviceIcon(for: context.state.deviceType))
+            .foregroundColor(.white)
+            .font(.system(size: 36))
+            .frame(width: 50, height: 50, alignment: .center)
         }
 
         DynamicIslandExpandedRegion(.trailing) {
-          VStack(alignment: .center) {
-            AnimatedCheckmark(connectionTime: context.state.connectionTime)
-          }
-          .frame(width: 50, height: 50)
+          AnimatedCheckmark(connectionTime: context.state.connectionTime)
+            .frame(width: 50, height: 50)
         }
 
         DynamicIslandExpandedRegion(.center) {
@@ -130,30 +126,27 @@ struct LiveActivityLockScreenView: View {
   let context: ActivityViewContext<BluetoothActivityAttributes>
 
   var body: some View {
-    VStack(spacing: 8) {
-      // Top row: Device icon and checkmark
-      HStack(spacing: 0) {
-        // Leading: Device icon
-        Image(systemName: deviceIcon(for: context.state.deviceType))
-          .foregroundColor(.white)
-          .frame(width: 32, height: 32, alignment: .leading)
+    HStack(spacing: 16) {
+      // Leading: Device icon
+      Image(systemName: deviceIcon(for: context.state.deviceType))
+        .foregroundColor(.white)
+        .font(.system(size: 28))
+        .frame(width: 40, height: 40, alignment: .center)
 
-        // Center: Connected to text
+      VStack(alignment: .leading) {
         Text("Connected to")
-          .font(.caption)
+          .font(.caption2)
           .foregroundColor(.secondary)
-          .frame(maxWidth: .infinity, alignment: .center)
-
-        // Trailing: Animated checkmark
-        AnimatedCheckmark(connectionTime: context.state.connectionTime)
-          .frame(width: 26, height: 26, alignment: .trailing)
+        Text(context.state.deviceName)
+          .font(.footnote)
+          .fontWeight(.semibold)
+          .lineLimit(1)
       }
+      .frame(maxWidth: .infinity, alignment: .leading)
 
-      // Bottom row: Device name
-      Text(context.state.deviceName)
-        .font(.subheadline)
-        .lineLimit(1)
-        .frame(maxWidth: .infinity, alignment: .center)
+      // Trailing: Animated checkmark
+      AnimatedCheckmark(connectionTime: context.state.connectionTime)
+        .frame(width: 40, height: 40, alignment: .trailing)
     }
     .padding()
   }
