@@ -14,14 +14,20 @@ struct TriggerNotificationIntent: AppIntent {
   // MARK: - Intent Configuration
 
   static var title: LocalizedStringResource = "Send Notification"
-  static var description = IntentDescription("Sends a persistent notification to Notification Center. Works on all iPhones. Requires notification permission.")
+  static var description = IntentDescription(
+    "Sends a persistent notification to Notification Center. Works on all iPhones. Requires notification permission."
+  )
 
   // Run in background without opening the app
   static var openAppWhenRun: Bool = false
 
   // MARK: - Parameters
 
-  @Parameter(title: "Device Name", description: "Text to display in notification (e.g., \"AirPods Pro\", \"Office\", \"Home\")")
+  @Parameter(
+    title: "Device Name",
+    description: "Text to display in notification (e.g., \"AirPods Pro\", \"Office\", \"Home\")",
+    inputOptions: .init(capitalizationType: .words)
+  )
   var deviceName: String
 
   @Parameter(
@@ -33,20 +39,21 @@ struct TriggerNotificationIntent: AppIntent {
 
   // MARK: - Logger
 
-  private let logger = Logger(subsystem: "com.lazco.BluetoothIsland", category: "TriggerNotificationIntent")
+  private let logger = Logger(
+    subsystem: Constants.Logging.subsystem,
+    category: Constants.Logging.Category.intent
+  )
 
   // MARK: - Perform
 
   @MainActor
   func perform() async throws -> some IntentResult {
-    logger.info("📱 [Shortcut] Triggered Notification for: \(self.deviceName)")
-    print("📱 [Shortcut] Triggered Notification for: \(deviceName)")
+    logger.info("📱 Triggered Notification: \(self.deviceName, privacy: .public)")
 
     let notificationManager = NotificationManager()
     await notificationManager.sendConnectionNotification(deviceName: deviceName)
 
-    logger.info("✅ [Shortcut] Notification sent successfully")
-    print("✅ [Shortcut] Notification sent successfully")
+    logger.info("✅ Notification sent: \(self.deviceName, privacy: .public)")
 
     return .result()
   }

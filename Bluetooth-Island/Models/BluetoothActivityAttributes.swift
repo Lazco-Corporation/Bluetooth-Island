@@ -10,18 +10,19 @@ import Foundation
 
 /// ActivityAttributes defining the data structure for Bluetooth connection Live Activities
 struct BluetoothActivityAttributes: ActivityAttributes {
-  /// Static properties that don't change during the activity's lifetime
+  /// Dynamic content that can be updated during the activity's lifetime
   public struct ContentState: Codable, Hashable {
-    /// The name of the connected Bluetooth device
+    /// The name of the connected device to display
     var deviceName: String
 
-    /// The connection timestamp
+    /// The connection timestamp for animation timing
     var connectionTime: Date
 
-    /// Optional device type icon identifier
+    /// Device type identifier for icon selection (e.g., "airpods", "watch")
     var deviceType: String?
   }
 
   /// Unique identifier for this activity session
+  /// Used to distinguish between multiple activity instances
   var sessionId: String
 }

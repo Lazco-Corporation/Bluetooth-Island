@@ -20,6 +20,8 @@ targets:
       - path: Bluetooth-Island
         excludes:
           - "*.md"
+        type: group
+        createIntermediateGroups: true
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.lazco.BluetoothIsland
       INFOPLIST_FILE: Bluetooth-Island/Info.plist
@@ -74,7 +76,10 @@ targets:
       - path: BluetoothIslandWidget
         excludes:
           - "*.md"
-      - path: Bluetooth-Island/BluetoothActivityAttributes.swift
+      # Shared files between app and widget
+      - path: Bluetooth-Island/Models/BluetoothActivityAttributes.swift
+      - path: Bluetooth-Island/Shared/Constants.swift
+      - path: Bluetooth-Island/Shared/DeviceIconMapper.swift
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.lazco.BluetoothIsland.BluetoothIslandWidget
       INFOPLIST_FILE: BluetoothIslandWidget/Info.plist

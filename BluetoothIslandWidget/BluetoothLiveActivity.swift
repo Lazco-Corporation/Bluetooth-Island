@@ -9,66 +9,32 @@ import ActivityKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - Shared Functions
-
-/// Returns the appropriate SF Symbol for the device type
-private func deviceIcon(for deviceType: String?) -> String {
-  guard let type = deviceType else { return "antenna.radiowaves.left.and.right" }
-
-  switch type {
-  case "airpods":
-    return "airpodspro"
-  case "beats":
-    return "beats.headphones"
-  case "watch":
-    return "applewatch"
-  case "keyboard":
-    return "keyboard"
-  case "mouse":
-    return "computermouse"
-  case "speaker":
-    return "hifispeaker"
-  case "headphones":
-    return "headphones"
-  case "car":
-    return "car"
-  case "iphone":
-    return "iphone"
-  case "ipad":
-    return "ipad"
-  case "mac":
-    return "macbook"
-  case "tv":
-    return "tv"
-  case "generic":
-    return "antenna.radiowaves.left.and.right"
-  default:
-    return "antenna.radiowaves.left.and.right"
-  }
-}
-
 // MARK: - Animated Checkmark View
 
+/// Animated checkmark that displays during Live Activity
 struct AnimatedCheckmark: View {
   let connectionTime: Date
 
   var body: some View {
     ProgressView(
-      timerInterval: connectionTime...connectionTime.addingTimeInterval(0.8),
+      timerInterval: connectionTime...connectionTime.addingTimeInterval(Constants.Design.Animation.checkmarkDuration),
       countsDown: false,
       label: {
-        Image(systemName: "checkmark")
+        Image(systemName: Constants.Icons.checkmark)
           .foregroundColor(.green)
       },
       currentValueLabel: {
-        Image(systemName: "checkmark")
+        Image(systemName: Constants.Icons.checkmark)
           .foregroundColor(.green)
       }
     )
     .progressViewStyle(.circular)
     .tint(.green)
+    .accessibilityLabel("Connection successful")
   }
 }
+
+// MARK: - Widget Configuration
 
 @main
 struct BluetoothIslandWidget: Widget {
@@ -79,42 +45,55 @@ struct BluetoothIslandWidget: Widget {
     } dynamicIsland: { context in
       // Dynamic Island presentation
       DynamicIsland {
-        // Expanded region
+        // Expanded region (when user long-presses)
         DynamicIslandExpandedRegion(.leading) {
-          Image(systemName: deviceIcon(for: context.state.deviceType))
+          Image(systemName: DeviceIconMapper.icon(for: context.state.deviceType))
             .foregroundColor(.white)
-            .font(.system(size: 36))
-            .frame(width: 50, height: 50, alignment: .center)
+            .font(.system(size: Constants.Design.DynamicIsland.expandedIconSize))
+            .frame(
+              width: Constants.Design.DynamicIsland.expandedIconFrameSize,
+              height: Constants.Design.DynamicIsland.expandedIconFrameSize,
+              alignment: .center
+            )
+            .accessibilityLabel("Device icon")
         }
 
         DynamicIslandExpandedRegion(.trailing) {
           AnimatedCheckmark(connectionTime: context.state.connectionTime)
-            .frame(width: 50, height: 50)
+            .frame(
+              width: Constants.Design.DynamicIsland.expandedIconFrameSize,
+              height: Constants.Design.DynamicIsland.expandedIconFrameSize
+            )
         }
 
         DynamicIslandExpandedRegion(.center) {
-          VStack(alignment: .leading) {
-            Text("Connected to")
+          VStack(alignment: .leading, spacing: 4) {
+            Text(Constants.Notification.defaultTitle)
               .font(.caption2)
               .foregroundColor(.secondary)
+
             Text(context.state.deviceName)
               .font(.footnote)
               .fontWeight(.semibold)
               .lineLimit(1)
           }
           .frame(maxWidth: .infinity, alignment: .leading)
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel("Connected to \(context.state.deviceName)")
         }
       } compactLeading: {
         // Compact leading (left side of notch)
-        Image(systemName: deviceIcon(for: context.state.deviceType))
+        Image(systemName: DeviceIconMapper.icon(for: context.state.deviceType))
           .foregroundColor(.white)
+          .accessibilityLabel("Device connected")
       } compactTrailing: {
         // Compact trailing (right side of notch)
         AnimatedCheckmark(connectionTime: context.state.connectionTime)
       } minimal: {
         // Minimal presentation (when multiple activities are active)
-        Image(systemName: deviceIcon(for: context.state.deviceType))
+        Image(systemName: DeviceIconMapper.icon(for: context.state.deviceType))
           .foregroundColor(.white)
+          .accessibilityLabel("Device connected")
       }
     }
   }
@@ -122,32 +101,50 @@ struct BluetoothIslandWidget: Widget {
 
 // MARK: - Lock Screen View
 
+/// Lock screen presentation of the Live Activity
 struct LiveActivityLockScreenView: View {
   let context: ActivityViewContext<BluetoothActivityAttributes>
 
   var body: some View {
-    HStack(spacing: 16) {
+    HStack(spacing: Constants.Design.LockScreen.padding) {
       // Leading: Device icon
-      Image(systemName: deviceIcon(for: context.state.deviceType))
+      Image(systemName: DeviceIconMapper.icon(for: context.state.deviceType))
         .foregroundColor(.white)
-        .font(.system(size: 28))
-        .frame(width: 40, height: 40, alignment: .center)
+        .font(.system(size: Constants.Design.LockScreen.iconSize))
+        .frame(
+          width: Constants.Design.LockScreen.iconFrameSize,
+          height: Constants.Design.LockScreen.iconFrameSize,
+          alignment: .center
+        )
+        .accessibilityLabel("Device icon")
 
-      VStack(alignment: .leading) {
-        Text("Connected to")
+      // Center: Connection text
+      VStack(alignment: .leading, spacing: 4) {
+        Text(Constants.Notification.defaultTitle)
           .font(.caption2)
           .foregroundColor(.secondary)
+
         Text(context.state.deviceName)
           .font(.footnote)
           .fontWeight(.semibold)
           .lineLimit(1)
       }
       .frame(maxWidth: .infinity, alignment: .leading)
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Connected to \(context.state.deviceName)")
 
       // Trailing: Animated checkmark
       AnimatedCheckmark(connectionTime: context.state.connectionTime)
-        .frame(width: 40, height: 40, alignment: .trailing)
+        .frame(
+          width: Constants.Design.LockScreen.iconFrameSize,
+          height: Constants.Design.LockScreen.iconFrameSize,
+          alignment: .trailing
+        )
     }
     .padding()
   }
 }
+
+// MARK: - Previews
+// Note: Live Activity previews are best tested on device or simulator
+// using the Shortcuts automation triggers

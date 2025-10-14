@@ -9,8 +9,6 @@ import SwiftUI
 
 @main
 struct BluetoothIslandApp: App {
-  // MARK: - Scene
-
   var body: some Scene {
     WindowGroup {
       ContentView()
