@@ -67,7 +67,6 @@ struct AnimatedCheckmark: View {
     )
     .progressViewStyle(.circular)
     .tint(.green)
-    .frame(width: 24, height: 24)
   }
 }
 
@@ -82,28 +81,32 @@ struct BluetoothIslandWidget: Widget {
       DynamicIsland {
         // Expanded region
         DynamicIslandExpandedRegion(.leading) {
-          Image(systemName: deviceIcon(for: context.state.deviceType))
-            .foregroundColor(.white)
-            .font(.body)
-            .padding(.leading, 1)
+          VStack(alignment: .center) {
+            Image(systemName: deviceIcon(for: context.state.deviceType))
+              .foregroundColor(.white)
+              .font(.system(size: 28))
+          }
+          .frame(width: 50, height: 50)
         }
 
         DynamicIslandExpandedRegion(.trailing) {
-          AnimatedCheckmark(connectionTime: context.state.connectionTime)
-            .padding(.trailing, 1)
+          VStack(alignment: .center) {
+            AnimatedCheckmark(connectionTime: context.state.connectionTime)
+          }
+          .frame(width: 50, height: 50)
         }
 
         DynamicIslandExpandedRegion(.center) {
-          Text("Connected to")
-            .font(.caption)
-            .foregroundColor(.secondary)
-        }
-
-        DynamicIslandExpandedRegion(.bottom) {
-          Text(context.state.deviceName)
-            .font(.subheadline)
-            .padding(.top, 2)
-            .lineLimit(1)
+          VStack(alignment: .leading) {
+            Text("Connected to")
+              .font(.caption2)
+              .foregroundColor(.secondary)
+            Text(context.state.deviceName)
+              .font(.footnote)
+              .fontWeight(.semibold)
+              .lineLimit(1)
+          }
+          .frame(maxWidth: .infinity, alignment: .leading)
         }
       } compactLeading: {
         // Compact leading (left side of notch)
@@ -132,9 +135,8 @@ struct LiveActivityLockScreenView: View {
       HStack(spacing: 0) {
         // Leading: Device icon
         Image(systemName: deviceIcon(for: context.state.deviceType))
-          .font(.title2)
           .foregroundColor(.white)
-          .frame(maxWidth: .infinity, alignment: .leading)
+          .frame(width: 32, height: 32, alignment: .leading)
 
         // Center: Connected to text
         Text("Connected to")
@@ -144,13 +146,12 @@ struct LiveActivityLockScreenView: View {
 
         // Trailing: Animated checkmark
         AnimatedCheckmark(connectionTime: context.state.connectionTime)
-          .frame(maxWidth: .infinity, alignment: .trailing)
+          .frame(width: 26, height: 26, alignment: .trailing)
       }
 
       // Bottom row: Device name
       Text(context.state.deviceName)
         .font(.subheadline)
-        .fontWeight(.medium)
         .lineLimit(1)
         .frame(maxWidth: .infinity, alignment: .center)
     }

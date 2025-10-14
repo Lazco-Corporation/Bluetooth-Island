@@ -55,7 +55,6 @@
 		67DB2CAA4305251DF64575AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78ED86ED2FA39E7DDCD86D51 /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
 		7C94C48A5F8EE46DD5CEC325 /* TriggerLiveActivityIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerLiveActivityIntent.swift; sourceTree = "<group>"; };
-		878F3848202E04E84612F81B /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
 		8D13771033D27FED1A824EB6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AD8C15E8C607C90526126217 /* Bluetooth-Island.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bluetooth-Island.entitlements"; sourceTree = "<group>"; };
 		B731D83112D4F9660A9E38E4 /* Bluetooth-Island.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluetooth-Island.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +76,6 @@
 				78ED86ED2FA39E7DDCD86D51 /* DeviceType.swift */,
 				3152127DF835D3822F4FEA4C /* Duration.swift */,
 				5A0AC943FCBFEAC3D3DAEBB5 /* Info.plist */,
-				878F3848202E04E84612F81B /* LiveActivityManager.swift */,
 				8D13771033D27FED1A824EB6 /* NotificationManager.swift */,
 				7C94C48A5F8EE46DD5CEC325 /* TriggerLiveActivityIntent.swift */,
 				BB5071EAFF5D7FDA2676E7E7 /* TriggerNotificationIntent.swift */,
