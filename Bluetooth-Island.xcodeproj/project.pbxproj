@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -53,7 +53,7 @@
 
 /* Begin PBXFileReference section */
 		01A6B43949DD85CC333FC61E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		05626EA36FA02ED2DA71653B /* BluetoothIslandWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = BluetoothIslandWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		05626EA36FA02ED2DA71653B /* BluetoothIslandWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BluetoothIslandWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		31897486CE25AED86048F440 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4F342B451F940292738B0579 /* BluetoothIslandShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothIslandShortcuts.swift; sourceTree = "<group>"; };
 		52534DF47B05C420FC8580B4 /* DeviceIconMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIconMapper.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		A39665BBDBC0DE62896298EA /* TriggerNotificationIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerNotificationIntent.swift; sourceTree = "<group>"; };
 		AA14E531662D1259008038C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD8C15E8C607C90526126217 /* Bluetooth-Island.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bluetooth-Island.entitlements"; sourceTree = "<group>"; };
-		B731D83112D4F9660A9E38E4 /* Bluetooth-Island.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "Bluetooth-Island.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B731D83112D4F9660A9E38E4 /* Bluetooth-Island.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluetooth-Island.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA403A332033035E7CC24A2 /* BluetoothLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothLiveActivity.swift; sourceTree = "<group>"; };
 		DFF08248FC11AA9E4171B0C6 /* BluetoothActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivityAttributes.swift; sourceTree = "<group>"; };
 		E4F187F798FCE3EBB1847FE1 /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
@@ -223,11 +223,9 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					B0ADEC91C0DDF905BA51A8C9 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 					EB7D9AA71CC7702570852EB5 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -242,7 +240,6 @@
 			);
 			mainGroup = DF5672387563172160F2EF4C;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -310,7 +307,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BluetoothIslandWidget/BluetoothIslandWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BMRNGRW6CG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BluetoothIslandWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -332,7 +329,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Bluetooth-Island/Bluetooth-Island.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BMRNGRW6CG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Bluetooth-Island/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -416,7 +413,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BluetoothIslandWidget/BluetoothIslandWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BMRNGRW6CG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BluetoothIslandWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -496,7 +493,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Bluetooth-Island/Bluetooth-Island.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BMRNGRW6CG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Bluetooth-Island/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
