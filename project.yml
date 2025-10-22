@@ -59,6 +59,8 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
+        # App Icon
+        CFBundleIconName: AppIcon
         # Live Activities Support
         NSSupportsLiveActivities: true
         # Notification Permission (optional - only if user chooses Notification type)

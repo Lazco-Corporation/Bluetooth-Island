@@ -126,7 +126,9 @@ Bluetooth-Island/
 - `Extensions.swift` - Helper extensions (Bundle.displayName)
 
 **Device Types:**
-Available in `DeviceType` enum: `airpods`, `beats`, `watch`, `keyboard`, `mouse`, `speaker`, `headphones`, `car`, `iphone`, `ipad`, `mac`, `tv`, `generic`
+Available in `DeviceType` enum: `airpods`, `beats`, `watch`, `keyboard`, `mouse`, `speaker`, `headphones`, `car`, `phone`, `tablet`, `computer`, `tv`, `generic`
+- Note: Enum cases renamed to comply with Apple's App Intent naming restrictions (no product names allowed in enum case names)
+- Internal device type strings remain as `iphone`, `ipad`, `mac` for backward compatibility with `DeviceIconMapper`
 
 **Duration Options:**
 Available in `Duration` enum: `oneSecond`, `twoSeconds`, `threeSeconds`, `fiveSeconds` (default), `tenSeconds`, `fifteenSeconds`

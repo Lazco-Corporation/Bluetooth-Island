@@ -31,7 +31,7 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
 
   static var title: LocalizedStringResource = "Show Live Activity (Dynamic Island)"
   static var description = IntentDescription(
-    "Displays a Live Activity in the Dynamic Island. Requires iPhone 14 Pro or newer. Perfect for automation triggers."
+    "Displays a Live Activity in the Dynamic Island. Requires Dynamic Island-compatible device. Perfect for automation triggers."
   )
 
   // Run in background without opening the app

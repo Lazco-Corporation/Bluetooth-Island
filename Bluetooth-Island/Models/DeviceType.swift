@@ -17,9 +17,9 @@ enum DeviceType: String, AppEnum {
   case speaker = "Speaker"
   case headphones = "Headphones"
   case car = "Car"
-  case iphone = "iPhone"
-  case ipad = "iPad"
-  case mac = "Mac"
+  case phone = "Phone"
+  case tablet = "Tablet"
+  case computer = "Computer"
   case tv = "Apple TV"
   case generic = "Generic Device"
 
@@ -34,9 +34,9 @@ enum DeviceType: String, AppEnum {
     .speaker: DisplayRepresentation(title: "Speaker", image: .init(systemName: "hifispeaker")),
     .headphones: DisplayRepresentation(title: "Headphones", image: .init(systemName: "headphones")),
     .car: DisplayRepresentation(title: "Car", image: .init(systemName: "car")),
-    .iphone: DisplayRepresentation(title: "iPhone", image: .init(systemName: "iphone")),
-    .ipad: DisplayRepresentation(title: "iPad", image: .init(systemName: "ipad")),
-    .mac: DisplayRepresentation(title: "Mac", image: .init(systemName: "macbook")),
+    .phone: DisplayRepresentation(title: "Phone", image: .init(systemName: "iphone")),
+    .tablet: DisplayRepresentation(title: "Tablet", image: .init(systemName: "ipad")),
+    .computer: DisplayRepresentation(title: "Computer", image: .init(systemName: "macbook")),
     .tv: DisplayRepresentation(title: "Apple TV", image: .init(systemName: "tv")),
     .generic: DisplayRepresentation(title: "Generic Device", image: .init(systemName: Constants.Icons.defaultDevice))
   ]
@@ -53,9 +53,9 @@ enum DeviceType: String, AppEnum {
     case .speaker: return "speaker"
     case .headphones: return "headphones"
     case .car: return "car"
-    case .iphone: return "iphone"
-    case .ipad: return "ipad"
-    case .mac: return "mac"
+    case .phone: return "iphone"
+    case .tablet: return "ipad"
+    case .computer: return "mac"
     case .tv: return "tv"
     case .generic: return "generic"
     }
