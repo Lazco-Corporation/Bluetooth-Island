@@ -15,7 +15,7 @@ struct BluetoothIslandShortcuts: AppShortcutsProvider {
       phrases: [
         "Show \(.applicationName) notification",
         "Display in Dynamic Island with \(.applicationName)",
-        "Trigger \(.applicationName) Live Activity"
+        "Trigger \(.applicationName) Live Activity",
       ],
       shortTitle: "Show Dynamic Island & Live Activity",
       systemImageName: "iphone.gen3.radiowaves.left.and.right"
@@ -25,10 +25,10 @@ struct BluetoothIslandShortcuts: AppShortcutsProvider {
       phrases: [
         "Send \(.applicationName) notification",
         "Notify with \(.applicationName)",
-        "Show \(.applicationName) alert"
+        "Show \(.applicationName) alert",
       ],
       shortTitle: "Show Notification",
       systemImageName: "bell.badge"
-    )
+    ),
   ]
 }

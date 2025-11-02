@@ -38,26 +38,27 @@ enum DeviceType: String, AppEnum {
     .tablet: DisplayRepresentation(title: "Tablet", image: .init(systemName: "ipad")),
     .computer: DisplayRepresentation(title: "Computer", image: .init(systemName: "macbook")),
     .tv: DisplayRepresentation(title: "Apple TV", image: .init(systemName: "tv")),
-    .generic: DisplayRepresentation(title: "Generic Device", image: .init(systemName: Constants.Icons.defaultDevice))
+    .generic: DisplayRepresentation(
+      title: "Generic Device", image: .init(systemName: Constants.Icons.defaultDevice)),
   ]
 
   /// Returns the internal device type string for use in BluetoothActivityAttributes
   /// Uses lowercase for consistency with DeviceIconMapper
   var deviceTypeString: String {
     switch self {
-    case .airpods: return "airpods"
-    case .beats: return "beats"
-    case .watch: return "watch"
-    case .keyboard: return "keyboard"
-    case .mouse: return "mouse"
-    case .speaker: return "speaker"
-    case .headphones: return "headphones"
-    case .car: return "car"
-    case .phone: return "iphone"
-    case .tablet: return "ipad"
-    case .computer: return "mac"
-    case .tv: return "tv"
-    case .generic: return "generic"
+    case .airpods: "airpods"
+    case .beats: "beats"
+    case .watch: "watch"
+    case .keyboard: "keyboard"
+    case .mouse: "mouse"
+    case .speaker: "speaker"
+    case .headphones: "headphones"
+    case .car: "car"
+    case .phone: "iphone"
+    case .tablet: "ipad"
+    case .computer: "mac"
+    case .tv: "tv"
+    case .generic: "generic"
     }
   }
 

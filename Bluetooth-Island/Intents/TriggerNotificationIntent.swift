@@ -48,12 +48,12 @@ struct TriggerNotificationIntent: AppIntent {
 
   @MainActor
   func perform() async throws -> some IntentResult {
-    logger.info("📱 Triggered Notification: \(self.deviceName, privacy: .public)")
+    logger.info("📱 Triggered Notification: \(deviceName, privacy: .public)")
 
     let notificationManager = NotificationManager()
     await notificationManager.sendConnectionNotification(deviceName: deviceName)
 
-    logger.info("✅ Notification sent: \(self.deviceName, privacy: .public)")
+    logger.info("✅ Notification sent: \(deviceName, privacy: .public)")
 
     return .result()
   }

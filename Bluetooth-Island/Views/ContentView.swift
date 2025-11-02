@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
   @State private var notificationPermissionGranted = false
   @State private var isRequestingPermission = false
-  @State private var selectedSection: HomeSection? = nil
+  @State private var selectedSection: HomeSection?
   @State private var scrollOffset: CGFloat = 0
   @Namespace private var namespace
 
@@ -21,7 +21,7 @@ struct ContentView: View {
         colors: [
           Color(red: 0.1, green: 0.1, blue: 0.2),
           Color(red: 0.15, green: 0.1, blue: 0.25),
-          Color(red: 0.2, green: 0.15, blue: 0.3)
+          Color(red: 0.2, green: 0.15, blue: 0.3),
         ],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
@@ -192,10 +192,11 @@ struct ContentView: View {
       }
       .padding(20)
     }
-    .transition(.asymmetric(
-      insertion: .move(edge: .trailing).combined(with: .opacity),
-      removal: .move(edge: .trailing).combined(with: .opacity)
-    ))
+    .transition(
+      .asymmetric(
+        insertion: .move(edge: .trailing).combined(with: .opacity),
+        removal: .move(edge: .trailing).combined(with: .opacity)
+      ))
   }
 
   // MARK: - Setup Detail View
@@ -261,14 +262,16 @@ struct ContentView: View {
         TimelineStep(
           number: 2,
           title: "Choose Trigger Type",
-          description: "Select \"Bluetooth\" from the trigger list (or NFC, Time of Day, Location, etc.)",
+          description:
+            "Select \"Bluetooth\" from the trigger list (or NFC, Time of Day, Location, etc.)",
           isLast: false
         )
 
         TimelineStep(
           number: 3,
           title: "Select Your Device",
-          description: "Choose the Bluetooth device you want to monitor (e.g., \"AirPods Pro\", \"Car Bluetooth\")",
+          description:
+            "Choose the Bluetooth device you want to monitor (e.g., \"AirPods Pro\", \"Car Bluetooth\")",
           isLast: false
         )
 
@@ -282,14 +285,16 @@ struct ContentView: View {
         TimelineStep(
           number: 5,
           title: "Add Bluetooth Island Action",
-          description: "Search for \"Bluetooth Island\" and choose either \"Show Dynamic Island & Live Activity\" or \"Show Notification\"",
+          description:
+            "Search for \"Bluetooth Island\" and choose either \"Show Dynamic Island & Live Activity\" or \"Show Notification\"",
           isLast: false
         )
 
         TimelineStep(
           number: 6,
           title: "Customize Display",
-          description: "Enter device name, choose an icon, and set display duration (Live Activity only)",
+          description:
+            "Enter device name, choose an icon, and set display duration (Live Activity only)",
           isLast: false
         )
 
@@ -343,10 +348,12 @@ struct ContentView: View {
             .font(.system(size: 16, weight: .bold))
             .foregroundColor(.white)
 
-          Text("This workaround will disable all notifications from the Shortcuts app, including the \"Show Notification\" action.")
-            .font(.system(size: 15, weight: .medium))
-            .foregroundColor(.white.opacity(0.8))
-            .fixedSize(horizontal: false, vertical: true)
+          Text(
+            "This workaround will disable all notifications from the Shortcuts app, including the \"Show Notification\" action."
+          )
+          .font(.system(size: 15, weight: .medium))
+          .foregroundColor(.white.opacity(0.8))
+          .fixedSize(horizontal: false, vertical: true)
         }
       }
       .padding(20)
@@ -417,7 +424,7 @@ struct ContentView: View {
           "Ensure Bluetooth Island app is NOT in use, AKA app should be closed.",
           "Check Device Compatibility: Dynamic Island requires iPhone 14 Pro or newer",
           "Verify Live Activities Are Enabled: Settings → Face ID & Passcode → Allow Access When Locked → Live Activities",
-          "Check iOS Version: Requires iOS 16.2 or later"
+          "Check iOS Version: Requires iOS 16.2 or later",
         ],
         color: Color.purple
       )
@@ -428,7 +435,7 @@ struct ContentView: View {
         solutions: [
           "Grant Permission: App requests notification permission on first use",
           "Check Notification Settings: Settings → Notifications → Bluetooth Island → Allow Notifications",
-          "Verify Automation: Shortcuts → Automation tab → Check automation is enabled"
+          "Verify Automation: Shortcuts → Automation tab → Check automation is enabled",
         ],
         color: Color.blue
       )
@@ -439,7 +446,7 @@ struct ContentView: View {
         solutions: [
           "Check \"Run Immediately\": Edit automation → Ensure \"Run Immediately\" is enabled",
           "Verify Device Connection: Make sure the Bluetooth device actually connects",
-          "Test Manually: Tap your automation in Shortcuts to test it directly"
+          "Test Manually: Tap your automation in Shortcuts to test it directly",
         ],
         color: Color.pink
       )
@@ -511,8 +518,8 @@ struct FloatingIcon: View {
       .onAppear {
         withAnimation(
           .easeInOut(duration: 3)
-          .repeatForever(autoreverses: true)
-          .delay(delay)
+            .repeatForever(autoreverses: true)
+            .delay(delay)
         ) {
           isAnimating = true
         }
@@ -559,7 +566,7 @@ struct SectionCard: View {
         action()
       }
     }) {
-      GeometryReader { geometry in
+      GeometryReader { _ in
         HStack(spacing: 20) {
           // Icon
           ZStack {
@@ -758,7 +765,7 @@ struct IssueCategory: View {
 
       // Solutions
       VStack(alignment: .leading, spacing: 12) {
-        ForEach(Array(solutions.enumerated()), id: \.offset) { index, solution in
+        ForEach(Array(solutions.enumerated()), id: \.offset) { _, solution in
           HStack(alignment: .top, spacing: 12) {
             Circle()
               .fill(color.opacity(0.6))

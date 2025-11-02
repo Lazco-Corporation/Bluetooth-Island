@@ -18,9 +18,9 @@ enum LiveActivityError: Error, CustomLocalizedStringResourceConvertible {
   var localizedStringResource: LocalizedStringResource {
     switch self {
     case .disabled:
-      return "Live Activities are disabled. Enable them in Settings > \(Bundle.main.displayName ?? "Bluetooth Island")."
+      "Live Activities are disabled. Enable them in Settings > \(Bundle.main.displayName ?? "Bluetooth Island")."
     case .activityRequestFailed:
-      return "Failed to start Live Activity. Please try again."
+      "Failed to start Live Activity. Please try again."
     }
   }
 }
@@ -71,7 +71,7 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
 
   @MainActor
   func perform() async throws -> some IntentResult & ProvidesDialog {
-    logger.info("📱 Triggered Live Activity: \(self.deviceName, privacy: .public)")
+    logger.info("📱 Triggered Live Activity: \(deviceName, privacy: .public)")
 
     // Check if Live Activities are enabled
     guard ActivityAuthorizationInfo().areActivitiesEnabled else {
@@ -112,7 +112,9 @@ struct TriggerLiveActivityIntent: LiveActivityIntent {
         try? await Task.sleep(nanoseconds: duration.nanoseconds)
         let finalContent = ActivityContent(state: contentState, staleDate: Date())
         await activity.end(finalContent, dismissalPolicy: .immediate)
-        logger.info("🛑 Live Activity ended: \(self.deviceName, privacy: .public) after \(self.duration.seconds, privacy: .public)s")
+        logger.info(
+          "🛑 Live Activity ended: \(deviceName, privacy: .public) after \(duration.seconds, privacy: .public)s"
+        )
       }
 
       return .result(dialog: "Showing \(deviceName) in Dynamic Island")

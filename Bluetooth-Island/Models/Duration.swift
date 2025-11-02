@@ -30,12 +30,12 @@ enum Duration: String, AppEnum {
   /// Returns the duration value in seconds
   var seconds: Double {
     switch self {
-    case .oneSecond: return 1.0
-    case .twoSeconds: return 2.0
-    case .threeSeconds: return 3.0
-    case .fiveSeconds: return 5.0
-    case .tenSeconds: return 10.0
-    case .fifteenSeconds: return 15.0
+    case .oneSecond: 1.0
+    case .twoSeconds: 2.0
+    case .threeSeconds: 3.0
+    case .fiveSeconds: 5.0
+    case .tenSeconds: 10.0
+    case .fifteenSeconds: 15.0
     }
   }
 

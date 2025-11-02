@@ -11,7 +11,7 @@ import Foundation
 /// ActivityAttributes defining the data structure for Bluetooth connection Live Activities
 struct BluetoothActivityAttributes: ActivityAttributes {
   /// Dynamic content that can be updated during the activity's lifetime
-  public struct ContentState: Codable, Hashable {
+  struct ContentState: Codable, Hashable {
     /// The name of the connected device to display
     var deviceName: String
 

@@ -17,7 +17,9 @@ struct AnimatedCheckmark: View {
 
   var body: some View {
     ProgressView(
-      timerInterval: connectionTime...connectionTime.addingTimeInterval(Constants.Design.Animation.checkmarkDuration),
+      timerInterval:
+        connectionTime...connectionTime.addingTimeInterval(
+          Constants.Design.Animation.checkmarkDuration),
       countsDown: false,
       label: {
         Image(systemName: Constants.Icons.checkmark)
@@ -146,5 +148,6 @@ struct LiveActivityLockScreenView: View {
 }
 
 // MARK: - Previews
+
 // Note: Live Activity previews are best tested on device or simulator
 // using the Shortcuts automation triggers
